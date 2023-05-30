@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <video id="video-background" autoplay loop muted>
+        <source src="vid7.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h1>Give me a dare</h1>
+        <button class="button" onclick="fetchData()">get started</button>
+    </div>
+
+    <script>
+        function fetchData() {
+            // Send an AJAX request to trigger the script on the server-side
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/get_data', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    // Handle the response if needed
+                    console.log('Data fetched successfully');
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
